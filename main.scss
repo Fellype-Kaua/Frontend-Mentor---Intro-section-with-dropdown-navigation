@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap");
+
+$AlmostWhite: hsl(0, 0%, 98%);
+$MediumGray: hsl(0, 0%, 41%);
+$AlmostBlack: hsl(0, 0%, 8%);
+
+@mixin font($titleOrText) {
+  @if $titleOrText == "title" {
+    font-size: 1.8rem;
+    font-weight: 700;
+  } @else if $titleOrText == "text" {
+    font-size: 1.4rem;
+    font-weight: 500;
+  } @else {
+    font-size: $titleOrText;
+  }
+}
+
+@mixin button($btnWidth) {
+  width: $btnWidth;
+  height: 4rem;
+  border-radius: 1rem;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid;
+  }
+}
+
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Epilogue", sans-serif;
+}
+
+body {
+  background-color: $AlmostWhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .dp-menu {
+    @include font(text);
+    position: fixed;
+    height: 8rem;
+    width: 100%;
+    color: $AlmostBlack;
+    background-color: $AlmostWhite;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      
+      img {
+        height: 3rem;
+        margin-right: 10rem;
+      }
+    }
+    li {
+      display: inline;
+      position: relative;
+    }
+    a {
+      padding: 10px;
+      display: inline-block;
+      text-decoration: none;
+      width: 15rem;
+      color: $AlmostBlack;
+    }
+
+    ul ul {
+      display: none;
+    }
+
+    .menu__btns{
+      button{
+      @include button(20rem);}
+    }
+  }
+
+  .dp-menu ul li:hover ul{
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 1rem;
+    background-color: $AlmostWhite;
+  }
+
+  .main__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20rem;
+
+    .container__content {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+
+      h1 {
+        @include font(5.4rem);
+      }
+
+      p {
+        @include font(text);
+      }
+    }
+
+    button {
+      @include button(20rem);
+      height: 6rem;
+    }
+
+    img {
+      width: 20%;
+    }
+
+    .container__icons{
+      img{
+        width: 6rem;
+        padding: 1rem;
+      }
+
+    }
+  }
+}
